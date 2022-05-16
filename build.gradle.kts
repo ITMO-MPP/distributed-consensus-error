@@ -1,22 +1,20 @@
-import org.jetbrains.kotlin.gradle.tasks.*
-
 group = "ru.ifmo.pds"
 version = "1.0-SNAPSHOT"
 
 plugins {
-    kotlin("jvm") version "1.3.70"
+    kotlin("jvm") version "1.6.20"
     application
 }
 
-application.mainClassName = "consensus.VisualiseKt"
+application.mainClass.set("consensus.VisualiseKt")
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
-    implementation("ch.qos.logback:logback-classic:1.2.3")
+    implementation("ch.qos.logback:logback-classic:1.2.9")
     testImplementation(kotlin("test-junit"))
 }
 
@@ -26,11 +24,5 @@ sourceSets {
     }
     test {
         java.setSrcDirs(listOf("test"))
-    }
-}
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        freeCompilerArgs += "-Xopt-in=kotlin.RequiresOptIn"
     }
 }

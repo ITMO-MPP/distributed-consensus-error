@@ -166,7 +166,7 @@ class VComponentUI(
     private fun MouseEvent.action(): Action? {
         val i = processByX(x)
         val time = timeByY(y)
-        val action = model.ps[i]?.actions?.minBy { abs(time - it.time) } ?: return null
+        val action = model.ps[i]?.actions?.minByOrNull { abs(time - it.time) } ?: return null
         if (point.distance(Point(xProcess(i), yTime(action.time))) > R) return null
         return action
     }

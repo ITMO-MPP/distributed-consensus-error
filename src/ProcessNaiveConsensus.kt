@@ -3,7 +3,6 @@ package consensus
 import java.util.*
 import kotlin.collections.ArrayDeque
 
-@OptIn(ExperimentalStdlibApi::class)
 class ProcessNaiveConsensus(env: Environment) : AbstractProcess(env) {
     private val nFails = 1
     private val nPhases = nFails + 1
@@ -51,7 +50,7 @@ class ProcessNaiveConsensus(env: Environment) : AbstractProcess(env) {
             }
         }
         // Done all phases -- decide on the minimal proposed value
-        env.decide(proposals.min()!!)
+        env.decide(proposals.minOrNull()!!)
     }
 
     override fun toString(): String = proposals.toString()
