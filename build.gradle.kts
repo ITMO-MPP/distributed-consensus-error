@@ -1,19 +1,16 @@
-group = "ru.ifmo.pds"
-version = "1.0-SNAPSHOT"
-
 plugins {
-    kotlin("jvm") version "1.6.20"
+    kotlin("jvm") version "2.1.10"
+    java
     application
 }
-
-application.mainClass.set("consensus.VisualiseKt")
 
 repositories {
     mavenCentral()
 }
 
+application.mainClass.set("consensus.VisualiseKt")
+
 dependencies {
-    implementation(kotlin("stdlib-jdk8"))
     implementation("ch.qos.logback:logback-classic:1.2.9")
     testImplementation(kotlin("test-junit"))
 }
@@ -25,4 +22,8 @@ sourceSets {
     test {
         java.setSrcDirs(listOf("test"))
     }
+}
+
+kotlin {
+    jvmToolchain(21)
 }
